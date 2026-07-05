@@ -7,7 +7,7 @@
     
     <style>
         :root {
-            --theme-color: #B0E0
+            --theme-color: #B0E0E6; /* အစ်ကိုရွေးချယ်ထားသော ပင်မအရောင် */
             --border-thick: 4px solid #000000;
             --card-gray: #8E8E8E;
             --text-dark: #000000;
@@ -73,45 +73,53 @@
             margin-bottom: 20px;
             position: relative;
             width: 100%;
-            overflow: hidden;
+            min-height: 140px; /* စာသားအောက်ဆင်းရင် ပုံစံမပျက်စေရန် Layout ထိန်းညှိမှု */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .hero-banner::before { content: '+'; position: absolute; top: -14px; left: -1px; font-size: 26px; font-weight: bold; color: #000; }
         .hero-banner::after { content: '+'; position: absolute; bottom: -18px; right: -1px; font-size: 26px; font-weight: bold; color: #000; }
         
-        /* 🔄 💯 စာသားအဆုံးထိပေါ်စေရန် ရာခိုင်နှုန်းအခြေပြု Typewriter Logic အသစ် */
-        .anim-container {
+        /* 🔄 Auto Row Wrapping Typing Display Area */
+        .text-block-area {
             width: 100%;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-        .anim-wrapper {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid var(--text-dark);
-            vertical-align: middle;
-            max-width: 0%; /* စတင်ချိန်တွင် သုည ရာခိုင်နှုန်း */
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
         
-        .hero-title-wrapper {
-            animation: forceType 6s steps(40, end) infinite;
-            font-size: 14px;
+        /* စာသားများကို ဘောင်ကျော်မထွက်စေဘဲ အလိုအလျောက် အောက်ကြောင်းဆင်းပေးမည့် စနစ် */
+        .dynamic-title {
+            font-size: 15px;
             font-weight: 900;
+            line-height: 1.4;
+            word-break: break-word;
         }
-        .hero-subtitle-wrapper {
-            animation: forceType 10s steps(50, end) infinite;
-            font-size: 11px; 
+        .dynamic-subtitle {
+            font-size: 12px; 
             font-weight: bold; 
             color: #222;
+            line-height: 1.5;
+            word-break: break-word;
         }
         
-        /* စာသားတစ်ခုလုံးကို 100% ပြည့်အောင် ဖော်ပြပေးပြီးမှ ပြန်ပိတ်မည့် စနစ် */
-        @keyframes forceType {
-            0%, 100% { max-width: 0%; }
-            40%, 65% { max-width: 100%; } 
+        /* Typing Cursor မျက်တောင်ခတ်သည့်အချက်ပြ */
+        .custom-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            background-color: var(--text-dark);
+            margin-left: 2px;
+            animation: blinkCursor 0.7s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blinkCursor {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
         }
 
-        .hero-link-wrapper { display: flex; justify-content: flex-end; width: 100%; margin-top: 10px; }
+        .hero-link-wrapper { display: flex; justify-content: flex-end; width: 100%; margin-top: 12px; }
         .hero-link { font-size: 13px; color: #000000; text-decoration: none; font-weight: 900; border-bottom: 3px solid #000; text-transform: uppercase; }
 
         /* 🔍 Search Field Input Box */
@@ -290,17 +298,16 @@
             margin-bottom: 20px;
         }
         
-        /* 🎬 Watch Page Title Text Animation Setup */
+        /* 🎬 Watch Page Title Box Setup */
         .theater-title-container {
             width: 100%;
-            overflow: hidden;
             margin-bottom: 15px;
         }
         .theater-title-wrapper {
-            animation: forceType 8s steps(35, end) infinite;
             font-size: 13px; 
             font-weight: 900; 
             text-transform: uppercase;
+            line-height: 1.4;
         }
 
         /* ✨ Suggestions Sub Header Component Line */
@@ -340,11 +347,9 @@
         </div>
 
         <div class="hero-banner">
-            <div class="anim-container">
-                <div class="anim-wrapper hero-title-wrapper">ပရီမီယမ် အတွေ့အကြုံ ပေးစွမ်းနိုင်မှု-------------</div>
-            </div>
-            <div class="anim-container">
-                <div class="anim-wrapper hero-subtitle-wrapper">မြန်မာကား // ဂျပန်ကား // ကိုရီးယားကား နိုင်ငံတကာကားများကို အဆင့်မြင့်မြင့် အခမဲ့ကြည့်ရှုပါ!</div>
+            <div class="text-block-area">
+                <div class="dynamic-title"><span id="typeTitleText"></span><span class="custom-cursor"></span></div>
+                <div class="dynamic-subtitle" id="typeSubtitleText"></div>
             </div>
             <div class="hero-link-wrapper">
                 <a class="hero-link" href="https://burmaapyr.com" target="_blank">BURMAAPYR.COM</a>
@@ -384,7 +389,7 @@
         </div>
 
         <div class="theater-title-container">
-            <div id="vTitle" class="anim-wrapper theater-title-wrapper">LOADING TITLE...</div>
+            <div id="vTitle" class="theater-title-wrapper">LOADING TITLE...</div>
         </div>
 
         <div class="related-section-title">RELATED VIDEOS</div>
@@ -401,8 +406,48 @@
         let isLoading = false;
         let isRelatedLoading = false;
 
+        // Banner Text Typing Config (စာသားအရှည်ကြီးများ အောက်ကြောင်းဆင်း၍ အပြည့်အစုံဖော်ပြပေးမည့် Dynamic System)
+        const titleTargetText = "ပရီမီယမ် အတွေ့အကြုံ ပေးစွမ်းနိုင်မှု-------------";
+        const subtitleTargetText = "မြန်မာကား // ဂျပန်ကား // ကိုရီးယားကား နိုင်ငံတကာကားများကို အဆင့်မြင့်မြင့် အခမဲ့ကြည့်ရှုပါ!";
+        
+        let titleIndex = 0;
+        let subtitleIndex = 0;
+        
+        function startBannerTyping() {
+            const titleEl = document.getElementById('typeTitleText');
+            const subtitleEl = document.getElementById('typeSubtitleText');
+            
+            titleEl.innerText = "";
+            subtitleEl.innerText = "";
+            titleIndex = 0;
+            subtitleIndex = 0;
+            
+            function typeTitle() {
+                if (titleIndex < titleTargetText.length) {
+                    titleEl.innerText += titleTargetText.charAt(titleIndex);
+                    titleIndex++;
+                    setTimeout(typeTitle, 90); // စာလုံးရိုက်နှုန်းအမြန်နှုန်း
+                } else {
+                    setTimeout(typeSubtitle, 200); // Title ပြီးရင် Subtitle ကိုဆက်ရိုက်ခိုင်းခြင်း
+                }
+            }
+            
+            function typeSubtitle() {
+                if (subtitleIndex < subtitleTargetText.length) {
+                    subtitleEl.innerText += subtitleTargetText.charAt(subtitleIndex);
+                    subtitleIndex++;
+                    setTimeout(typeSubtitle, 50); 
+                } else {
+                    setTimeout(startBannerTyping, 5000); // စာသားအကုန်ပေါ်ပြီး ၅ စက္ကန့်ကြာရင် အစကနေပြန်လည်ပတ်စေခြင်း
+                }
+            }
+            
+            typeTitle();
+        }
+
         window.onload = function() {
             setRandomFeed();
+            startBannerTyping(); // Typing စနစ် စတင်မောင်းနှင်ခြင်း
         };
 
         function filterCategory(cat, element) {
