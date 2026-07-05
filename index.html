@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BURMA APYR HD</title>
+    <title>BURMA APYAR HD</title>
     
     <style>
         :root {
-            --theme-color: #B0E0E6; /* အစ်ကိုရွေးချယ်ထားသော ပင်မအရောင် */
+            --theme-color: #B0E0E6; 
             --border-thick: 4px solid #000000;
             --card-gray: #8E8E8E;
             --text-dark: #000000;
@@ -21,8 +21,9 @@
             font-family: 'Arial Black', 'Impact', sans-serif; 
             -webkit-tap-highlight-color: transparent;
         }
+        /* 🎨 Web နောက်ခံ တစ်ခုလုံးကို #B0E0E6 သို့ ပြောင်းလဲထားခြင်း */
         body { 
-            background: #ffffff; 
+            background: var(--theme-color); 
             color: var(--text-dark); 
             padding: 12px; 
             overflow-x: hidden;
@@ -38,9 +39,11 @@
             gap: 10px;
             width: 100%;
         }
+        
+        /* ✨ BURMA - APYAR - HD Animated Text Logo */
         .logo-container {
             flex-grow: 1;
-            background: #EAEAEA;
+            background: #000000; /* စာလုံးလင်းတာ ပေါ်လွင်စေရန် အမည်းရောင်ပြောင်း */
             border: var(--border-thick);
             border-radius: 20px;
             padding: 12px 15px;
@@ -49,8 +52,21 @@
             letter-spacing: 0.5px;
             white-space: nowrap;
             overflow: hidden;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            
+            /* Animation Effect */
+            background: linear-gradient(to right, #ff4e50, #f9d423, #00f2fe, #4facfe, #ff4e50);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineText 3s linear infinite;
         }
-        .logo-container span { font-weight: normal; font-style: italic; font-family: 'Courier New', monospace; color: #666; margin: 0 4px; }
+        @keyframes shineText {
+            to { background-position: 200% center; }
+        }
+
         .logo-circle {
             width: 52px; height: 52px;
             background: #E57C4B; 
@@ -64,7 +80,7 @@
             flex-shrink: 0;
         }
 
-        /* 💥 Hero Banner Box (Mobile Fitted Layout) */
+        /* 💥 Hero Banner Box */
         .hero-banner {
             background: #ffffff;
             border: var(--border-thick);
@@ -73,7 +89,7 @@
             margin-bottom: 20px;
             position: relative;
             width: 100%;
-            min-height: 140px; /* စာသားအောက်ဆင်းရင် ပုံစံမပျက်စေရန် Layout ထိန်းညှိမှု */
+            min-height: 140px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -81,15 +97,12 @@
         .hero-banner::before { content: '+'; position: absolute; top: -14px; left: -1px; font-size: 26px; font-weight: bold; color: #000; }
         .hero-banner::after { content: '+'; position: absolute; bottom: -18px; right: -1px; font-size: 26px; font-weight: bold; color: #000; }
         
-        /* 🔄 Auto Row Wrapping Typing Display Area */
         .text-block-area {
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 6px;
         }
-        
-        /* စာသားများကို ဘောင်ကျော်မထွက်စေဘဲ အလိုအလျောက် အောက်ကြောင်းဆင်းပေးမည့် စနစ် */
         .dynamic-title {
             font-size: 15px;
             font-weight: 900;
@@ -103,8 +116,6 @@
             line-height: 1.5;
             word-break: break-word;
         }
-        
-        /* Typing Cursor မျက်တောင်ခတ်သည့်အချက်ပြ */
         .custom-cursor {
             display: inline-block;
             width: 3px;
@@ -205,8 +216,8 @@
             text-transform: uppercase;
         }
         .category-btn.active {
-            background: var(--theme-color);
-            color: #000000;
+            background: #000000;
+            color: var(--theme-color);
         }
 
         /* 🎬 2-Column Responsive Video Grid */
@@ -234,10 +245,9 @@
             border-bottom: 3px solid #000; 
         }
         
-        /* 👁️ Fitted Metadata Views Style */
         .video-meta-info {
             padding: 8px 10px;
-            background: var(--theme-color); 
+            background: #ffffff; 
             font-size: 11px;
             font-weight: 900;
             color: var(--text-dark);
@@ -253,7 +263,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: #ffffff; 
+            background: var(--theme-color); 
             padding: 12px; 
             overflow-y: auto;
             z-index: 9999;
@@ -292,13 +302,12 @@
             aspect-ratio: 1.45/1; 
             border-radius: 25px; 
             overflow: hidden; 
-            background: var(--theme-color); 
+            background: #000000; 
             position: relative; 
             border: var(--border-thick); 
             margin-bottom: 20px;
         }
         
-        /* 🎬 Watch Page Title Box Setup */
         .theater-title-container {
             width: 100%;
             margin-bottom: 15px;
@@ -334,33 +343,100 @@
         }
 
         .loader { display: block; text-align: center; padding: 15px; color: #000; font-size: 14px; font-weight: 900; }
+
+        /* 🚨 🛑 Notice Pop-up UI Component */
+        .notice-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100000;
+            padding: 20px;
+        }
+        .notice-box {
+            background: #ffffff;
+            border: var(--border-thick);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 340px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 0 #000;
+        }
+        .notice-header {
+            font-size: 20px;
+            color: #ff4e50;
+            font-weight: 900;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .notice-body {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #222;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+        .notice-btn {
+            background: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 10px 30px;
+            font-size: 14px;
+            font-weight: 900;
+            border-radius: 12px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .notice-btn:active {
+            background: #333;
+        }
     </style>
 </head>
 <body>
 
+    <!-- 🚨 Notice Alert Pop-up Component -->
+    <div class="notice-overlay" id="noticeBox">
+        <div class="notice-box">
+            <div class="notice-header">⚠️ သတိပေးချက်</div>
+            <div class="notice-body">
+                BURMA APYAR HD မှ ကြိုဆိုပါသည်ဗျာ။ နိုင်ငံတကာ အပြာကားမျိုးစုံကို အရည်အသွေးအကောင်းဆုံးနဲ့ အခမဲ့ကြည့်ရှုနိုင်ပါတယ်။ အဆင်ပြေရင် Link ကို Share ပေးကြပါဦးခင်ဗျာ။
+            </div>
+            <button class="notice-btn" onclick="closeNotice()">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- 🏠 [MOBILE MAIN HOME FEED] -->
     <div id="mainPageContent">
+        <!-- Top Navigation Bar (BURMA - APYAR - HD Animated Text) -->
         <div class="nav-bar">
             <div class="logo-container" onclick="refreshToRandom()">
-                BURMA <span>- APYR -</span> HD
+                BURMA - APYAR - HD
             </div>
             <div class="logo-circle">Logo</div>
         </div>
 
+        <!-- Promoted Campaign Banner -->
         <div class="hero-banner">
             <div class="text-block-area">
                 <div class="dynamic-title"><span id="typeTitleText"></span><span class="custom-cursor"></span></div>
                 <div class="dynamic-subtitle" id="typeSubtitleText"></div>
             </div>
             <div class="hero-link-wrapper">
-                <a class="hero-link" href="https://burmaapyr.com" target="_blank">BURMAAPYR.COM</a>
+                <a class="hero-link" href="https://burmaapyar.com" target="_blank">BURMAAPYAR.COM</a>
             </div>
         </div>
 
+        <!-- Inline Functional Search Engine Field -->
         <div class="search-container">
             <input type="text" class="search-input" id="searchInput" placeholder="SEARCH...VIDEOS" onkeypress="handleSearch(event)">
             <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
 
+        <!-- Category Horizontal Segment Router -->
         <div class="category-title">CATEGORY</div>
         <div class="category-wrapper">
             <div class="category-bg-line"></div>
@@ -371,12 +447,15 @@
             </div>
         </div>
 
+        <!-- Main Video Streaming Response Feed Grid Layout -->
         <div class="video-grid" id="container"></div>
         <div id="loadingStatus" class="loader" style="display:none;">LOADING VIDEOS...</div>
     </div>
 
 
+    <!-- 📱 [MOBILE THEATER PANEL WATCH EXPERIENCE] -->
     <div id="theaterPage">
+        <!-- Back Switch Handle -->
         <div class="back-btn-container" onclick="closePlayer()">
             <div class="back-arrow-box">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
@@ -384,39 +463,46 @@
             <div class="back-text-box">နောက်သို့ပြန်သွားရန်</div>
         </div>
         
+        <!-- Embed Player Area -->
         <div class="player-box">
             <iframe id="frame" src="" width="100%" height="100%" allowfullscreen style="border:none;"></iframe>
         </div>
 
+        <!-- Title Display -->
         <div class="theater-title-container">
             <div id="vTitle" class="theater-title-wrapper">LOADING TITLE...</div>
         </div>
 
+        <!-- Related Dynamic Slider -->
         <div class="related-section-title">RELATED VIDEOS</div>
         <div class="video-grid" id="relatedContainer"></div>
         <div id="relatedLoadingStatus" class="loader" style="display:none;">LOADING RELATED...</div>
     </div>
 
 
+    <!-- ⚙️ JavaScript Core Controller System Architecture -->
     <script>
-        const keywordsPool = ['myanmar', 'japan', 'asian', 'romance', 'sexy', 'leaked', 'amateur'];
+        const keywordsPool = ['myanmar', 'japan', 'asian', 'romance', 'sexy', 'leaked', 'amateur', 'jav', 'korean'];
         let query = 'all';
         let page = 1;
         let relatedPage = 1;
         let isLoading = false;
         let isRelatedLoading = false;
 
-        // Banner Text Typing Config (စာသားအရှည်ကြီးများ အောက်ကြောင်းဆင်း၍ အပြည့်အစုံဖော်ပြပေးမည့် Dynamic System)
+        // 🚨 Pop-up control logic
+        function closeNotice() {
+            document.getElementById('noticeBox').style.display = 'none';
+        }
+
+        // Banner Typing Configuration
         const titleTargetText = "ပရီမီယမ် အတွေ့အကြုံ ပေးစွမ်းနိုင်မှု-------------";
         const subtitleTargetText = "မြန်မာကား // ဂျပန်ကား // ကိုရီးယားကား နိုင်ငံတကာကားများကို အဆင့်မြင့်မြင့် အခမဲ့ကြည့်ရှုပါ!";
-        
         let titleIndex = 0;
         let subtitleIndex = 0;
         
         function startBannerTyping() {
             const titleEl = document.getElementById('typeTitleText');
             const subtitleEl = document.getElementById('typeSubtitleText');
-            
             titleEl.innerText = "";
             subtitleEl.innerText = "";
             titleIndex = 0;
@@ -426,42 +512,45 @@
                 if (titleIndex < titleTargetText.length) {
                     titleEl.innerText += titleTargetText.charAt(titleIndex);
                     titleIndex++;
-                    setTimeout(typeTitle, 90); // စာလုံးရိုက်နှုန်းအမြန်နှုန်း
+                    setTimeout(typeTitle, 90);
                 } else {
-                    setTimeout(typeSubtitle, 200); // Title ပြီးရင် Subtitle ကိုဆက်ရိုက်ခိုင်းခြင်း
+                    setTimeout(typeSubtitle, 200);
                 }
             }
-            
             function typeSubtitle() {
                 if (subtitleIndex < subtitleTargetText.length) {
                     subtitleEl.innerText += subtitleTargetText.charAt(subtitleIndex);
                     subtitleIndex++;
                     setTimeout(typeSubtitle, 50); 
                 } else {
-                    setTimeout(startBannerTyping, 5000); // စာသားအကုန်ပေါ်ပြီး ၅ စက္ကန့်ကြာရင် အစကနေပြန်လည်ပတ်စေခြင်း
+                    setTimeout(startBannerTyping, 5000); 
                 }
             }
-            
             typeTitle();
         }
 
         window.onload = function() {
             setRandomFeed();
-            startBannerTyping(); // Typing စနစ် စတင်မောင်းနှင်ခြင်း
+            startBannerTyping();
         };
+
+        // 🔄 နှိပ်တိုင်း ဗီဒီယိုအသစ်တွေ ရောသမမွှေပြီး ထွက်လာစေရန် Dynamic Page Random Logic
+        function getRandomPage() {
+            return Math.floor(Math.random() * 25) + 1;
+        }
 
         function filterCategory(cat, element) {
             document.querySelectorAll('.category-btn').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             query = cat === 'all' ? 'asian' : cat;
-            page = 1;
+            page = getRandomPage(); // Category ပြောင်းတိုင်း random အသစ်ပြောင်းယူခြင်း
             document.getElementById('container').innerHTML = '';
             fetchVideos(page);
         }
 
         function setRandomFeed() {
-            query = 'asian';
-            page = Math.floor(Math.random() * 5) + 1; 
+            query = keywordsPool[Math.floor(Math.random() * keywordsPool.length)];
+            page = getRandomPage(); 
             document.getElementById('container').innerHTML = '';
             fetchVideos(page);
         }
@@ -533,7 +622,7 @@
             document.getElementById('vTitle').innerText = title;
             
             document.getElementById('relatedContainer').innerHTML = '';
-            relatedPage = Math.floor(Math.random() * 4) + 1;
+            relatedPage = getRandomPage();
             fetchRelatedVideos(relatedPage);
 
             document.getElementById('theaterPage').scrollTop = 0;
@@ -556,13 +645,13 @@
             }
         }
 
+        // 🔄 LOGO ကို နှိပ်လိုက်တာနဲ့ ဗီဒီယိုအသစ်တွေ အမြဲထွက်လာစေမည့် နေရာ
         function refreshToRandom() {
             closePlayer();
             document.getElementById('searchInput').value = '';
             setRandomFeed();
         }
 
-        // Global Responsive Mobile Scroll Listener Configuration
         window.onscroll = () => {
             if (document.getElementById('theaterPage').style.display !== 'block') {
                 if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 500) {
@@ -571,7 +660,6 @@
             }
         };
 
-        // Screen Theater Monitor Dynamic Lazy Feed Setup
         document.getElementById('theaterPage').onscroll = function() {
             const theater = document.getElementById('theaterPage');
             if (theater.scrollTop + theater.clientHeight >= theater.scrollHeight - 350) {
