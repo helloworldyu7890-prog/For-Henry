@@ -2,127 +2,146 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BURMA APYR HD</title>
     
     <style>
         :root {
             --theme-color: #B0E0E6; /* အစ်ကိုရွေးချယ်ထားသော ပင်မအရောင် */
-            --border-thick: 5px solid #000000;
+            --border-thick: 4px solid #000000;
             --card-gray: #8E8E8E;
             --text-dark: #000000;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial Black', 'Impact', sans-serif; }
-        body { background: #ffffff; color: var(--text-dark); padding: 15px; overflow-x: hidden; }
+        /* Mobile Reset & Core Settings */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Arial Black', 'Impact', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+        }
+        body { 
+            background: #ffffff; 
+            color: var(--text-dark); 
+            padding: 12px; 
+            overflow-x: hidden;
+            width: 100%;
+        }
 
-        /* 👑 UI Navbar */
+        /* 👑 UI Navbar Component */
         .nav-bar { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            margin-bottom: 20px;
-            gap: 15px;
+            margin-bottom: 16px;
+            gap: 10px;
+            width: 100%;
         }
         .logo-container {
             flex-grow: 1;
             background: #EAEAEA;
             border: var(--border-thick);
-            border-radius: 24px;
-            padding: 15px 20px;
-            font-size: 24px;
+            border-radius: 20px;
+            padding: 12px 15px;
+            font-size: 18px;
             font-weight: 900;
-            letter-spacing: 1px;
-            display: inline-flex;
+            letter-spacing: 0.5px;
             white-space: nowrap;
+            overflow: hidden;
         }
-        .logo-container span { font-weight: normal; font-style: italic; font-family: 'Courier New', monospace; color: #777; margin: 0 8px; }
+        .logo-container span { font-weight: normal; font-style: italic; font-family: 'Courier New', monospace; color: #666; margin: 0 4px; }
         .logo-circle {
-            width: 65px; height: 65px;
+            width: 52px; height: 52px;
             background: #E57C4B; 
             border: var(--border-thick);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 900;
             flex-shrink: 0;
         }
 
-        /* 💥 Hero Banner Box (ထောင့်လေးထောင့်တွင် Plus ပါဝင်မှု) */
+        /* 💥 Hero Banner Box (Mobile Fitted Layout) */
         .hero-banner {
             background: #ffffff;
             border: var(--border-thick);
-            padding: 25px 20px;
-            border-radius: 24px; 
-            margin-bottom: 25px;
+            padding: 20px 15px;
+            border-radius: 20px; 
+            margin-bottom: 20px;
             position: relative;
+            width: 100%;
+            overflow: hidden;
         }
-        .hero-banner::before { content: '+'; position: absolute; top: -18px; left: -2px; font-size: 32px; font-weight: bold; color: #000; }
-        .hero-banner::after { content: '+'; position: absolute; bottom: -22px; right: -2px; font-size: 32px; font-weight: bold; color: #000; }
+        .hero-banner::before { content: '+'; position: absolute; top: -14px; left: -1px; font-size: 26px; font-weight: bold; color: #000; }
+        .hero-banner::after { content: '+'; position: absolute; bottom: -18px; right: -1px; font-size: 26px; font-weight: bold; color: #000; }
         
-        /* 🔄 စာသားများ ရှေ့တိုးနောက်ဆုတ် လုပ်မည့် Typewriter Animation Framework */
+        /* 🔄 Mobile Typewriter Animation Control Logic */
+        .anim-container {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
         .anim-wrapper {
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            border-right: 4px solid var(--text-dark);
+            border-right: 3px solid var(--text-dark);
+            text-overflow: clip;
             vertical-align: middle;
         }
         
         .hero-title-wrapper {
-            max-width: 100%;
-            animation: textMoveTitle 8s steps(30, end) infinite;
+            animation: typeTitle 7s steps(25, end) infinite;
+            font-size: 15px;
+            font-weight: 900;
         }
         .hero-subtitle-wrapper {
-            max-width: 100%;
-            animation: textMoveSubtitle 8s steps(40, end) infinite;
-            font-size: 14px; 
+            animation: typeSubtitle 7s steps(35, end) infinite;
+            font-size: 12px; 
             font-weight: bold; 
             color: #222;
         }
         
-        @keyframes textMoveTitle {
+        @keyframes typeTitle {
             0%, 100% { width: 0; }
-            45%, 55% { width: 330px; } /* Title စာသားအကျယ်အလိုက် ချိန်ညှိမှု */
+            40%, 60% { width: 250px; } /* Mobile Screen ပေါ်မူတည်၍ စာသားအကျယ်ကွက်တိဖြတ်တောက်မှု */
         }
-        @keyframes textMoveSubtitle {
+        @keyframes typeSubtitle {
             0%, 100% { width: 0; }
-            45%, 55% { width: 100%; } 
+            40%, 60% { width: 100%; } 
         }
 
-        .hero-title { font-size: 18px; font-weight: 900; margin-bottom: 12px; }
-        .hero-subtitle { margin-bottom: 15px; line-height: 1.7; }
-        .hero-link-wrapper { display: flex; justify-content: flex-end; width: 100%; }
-        .hero-link { font-size: 15px; color: #000000; text-decoration: none; font-weight: 900; border-bottom: 3px solid #000; text-transform: uppercase; }
+        .hero-link-wrapper { display: flex; justify-content: flex-end; width: 100%; margin-top: 10px; }
+        .hero-link { font-size: 13px; color: #000000; text-decoration: none; font-weight: 900; border-bottom: 3px solid #000; text-transform: uppercase; }
 
-        /* 🔍 Search Input */
-        .search-container { padding: 0 0 25px 0; position: relative; }
+        /* 🔍 Search Field Input Box */
+        .search-container { padding: 0 0 20px 0; position: relative; width: 100%; }
         .search-input { 
             width: 100%; 
-            padding: 15px 55px 15px 20px; 
-            border-radius: 18px; 
+            padding: 12px 45px 12px 15px; 
+            border-radius: 15px; 
             border: var(--border-thick); 
             background: #ffffff; 
             outline: none;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
         .search-icon {
             position: absolute;
-            right: 20px; top: 15px;
-            width: 28px; height: 28px;
+            right: 15px; top: 12px;
+            width: 24px; height: 24px;
         }
 
-        /* 🏷️ Category Selection */
+        /* 🏷️ Category Block Panel */
         .category-title {
-            font-size: 24px;
+            font-size: 18px;
             font-style: italic;
             font-weight: 900;
-            margin-bottom: 25px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             text-transform: uppercase;
@@ -130,26 +149,27 @@
         .category-title::after {
             content: '';
             flex-grow: 1;
-            margin-left: 15px;
-            border-bottom: 5px dashed #000000;
+            margin-left: 10px;
+            border-bottom: 4px dashed #000000;
         }
         .category-title::before {
             content: '🔖';
             order: 3;
-            margin-left: 10px;
-            font-size: 24px;
+            margin-left: 8px;
+            font-size: 20px;
         }
         .category-wrapper {
             position: relative;
-            margin-bottom: 35px;
-            padding: 10px 0;
+            margin-bottom: 25px;
+            padding: 5px 0;
             display: flex;
             justify-content: center;
+            width: 100%;
         }
         .category-bg-line {
             position: absolute;
             top: 50%; left: 0; right: 0;
-            height: 18px;
+            height: 14px;
             background: #3A3A3A;
             border: var(--border-thick);
             transform: translateY(-50%);
@@ -161,140 +181,155 @@
             width: 100%;
             z-index: 2;
             position: relative;
+            gap: 10px;
         }
         .category-btn {
-            width: 95px; height: 95px;
+            flex: 1;
+            aspect-ratio: 1/1;
+            max-width: 80px;
             background: var(--card-gray);
             border: var(--border-thick);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 900;
             color: #ffffff;
             cursor: pointer;
             text-transform: uppercase;
-            transition: transform 0.1s;
         }
-        .category-btn.active, .category-btn:hover {
+        .category-btn.active {
             background: var(--theme-color);
             color: #000000;
-            transform: scale(1.05);
         }
 
-        /* 🎬 Main Video Grid Layout */
+        /* 🎬 2-Column Responsive Video Grid (ကွက်တိညီညာမှုဗဟိုပြုစနစ်) */
         .video-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
-            gap: 15px; 
+            gap: 12px; 
+            width: 100%;
         }
         .video-item { 
             background: #ffffff; 
-            border-radius: 18px; 
+            border-radius: 16px; 
             overflow: hidden; 
             cursor: pointer;
             border: var(--border-thick);
             display: flex;
             flex-direction: column;
+            width: 100%;
         }
-        .thumb { width: 100%; aspect-ratio: 1.2/1; object-fit: cover; background: #666; border-bottom: 4px solid #000; }
+        .thumb { 
+            width: 100%; 
+            aspect-ratio: 1.25/1; 
+            object-fit: cover; 
+            background: #666; 
+            border-bottom: 3px solid #000; 
+        }
         
-        /* 👁️ Views Display Info Container */
+        /* 👁️ Fitted Metadata Views Style */
         .video-meta-info {
-            padding: 10px 12px;
-            background: var(--theme-color); /* Theme နှင့် ထပ်တူကျအောင် ညှိထားမှု */
-            font-size: 13px;
+            padding: 8px 10px;
+            background: var(--theme-color); 
+            font-size: 11px;
             font-weight: 900;
             color: var(--text-dark);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        /* 📱 Dedicated Video View Page (Theater Panel Layer) */
+        /* 📱 Dedicated Separate Watch View Layer */
         #theaterPage { 
             display: none; 
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
             background: #ffffff; 
-            padding: 15px; 
+            padding: 12px; 
             overflow-y: auto;
             z-index: 9999;
         }
         
-        /* 🔙 Back Button Layout */
+        /* 🔙 Back Controller Handle Box */
         .back-btn-container {
             display: inline-flex;
             align-items: center;
             background: var(--card-gray);
             border: var(--border-thick);
-            border-radius: 16px;
+            border-radius: 14px;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             cursor: pointer;
         }
         .back-arrow-box {
             background: #E8C5C8; 
-            padding: 10px 18px;
+            padding: 8px 14px;
             border-right: var(--border-thick);
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .back-arrow-box svg { width: 24px; height: 24px; fill: #000000; }
+        .back-arrow-box svg { width: 20px; height: 20px; fill: #000000; }
         .back-text-box {
-            padding: 0 18px;
+            padding: 0 14px;
             color: #ffffff;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 900;
         }
 
-        /* 📺 Video Stream Player Window Frame */
+        /* 📺 Player Frame Monitor Window Layout */
         .player-box { 
             width: 100%; 
             aspect-ratio: 1.45/1; 
-            border-radius: 35px; 
+            border-radius: 25px; 
             overflow: hidden; 
             background: var(--theme-color); 
             position: relative; 
             border: var(--border-thick); 
-            margin-bottom: 25px;
-        }
-        
-        /* 🎬 Theater Title Text Animation */
-        .theater-title-wrapper {
-            max-width: 100%;
-            animation: textMoveTitle 9s steps(40, end) infinite;
-            font-size: 16px; 
-            font-weight: 900; 
-            text-transform: uppercase;
             margin-bottom: 20px;
         }
+        
+        /* 🎬 Watch Page Title Text Animation Setup */
+        .theater-title-container {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .theater-title-wrapper {
+            animation: typeTitle 8s steps(30, end) infinite;
+            font-size: 14px; 
+            font-weight: 900; 
+            text-transform: uppercase;
+        }
 
-        /* ✨ Related Block Section Headline Line */
+        /* ✨ Suggestions Sub Header Component Line */
         .related-section-title {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 900;
             text-transform: uppercase;
-            margin: 30px 0 20px 0;
+            margin: 25px 0 15px 0;
             display: flex;
             align-items: center;
+            width: 100%;
         }
         .related-section-title::after {
             content: '';
             flex-grow: 1;
-            margin-left: 15px;
-            border-bottom: 5px dashed #000000;
+            margin-left: 10px;
+            border-bottom: 4px dashed #000000;
         }
         .related-section-title::before {
             content: '🔖';
             order: 3;
-            margin-left: 10px;
-            font-size: 24px;
+            margin-left: 8px;
+            font-size: 20px;
         }
 
-        .loader { display: block; text-align: center; padding: 20px; color: #000; font-size: 16px; font-weight: 900; }
+        .loader { display: block; text-align: center; padding: 15px; color: #000; font-size: 14px; font-weight: 900; }
     </style>
 </head>
 <body>
@@ -308,14 +343,14 @@
         </div>
 
         <div class="hero-banner">
-            <div class="hero-title">
+            <div class="anim-container">
                 <div class="anim-wrapper hero-title-wrapper">ပရီမီယမ် အတွေ့အကြုံ ပေးစွမ်းနိုင်မှု-------------</div>
             </div>
-            <div class="hero-subtitle">
-                <div class="anim-wrapper hero-subtitle-wrapper">မြန်မာကား // ဂျပန်ကား // ကိုရီးယားကား // နိုင်ငံတကာအဆင့်မှီ ဇာတ်ကားပေါင်းများစွာကို အဆင့်မြင့်မြင့် အခမဲ့ ကြည့်ရှုနိုင်ပြီ!</div>
+            <div class="anim-container">
+                <div class="anim-wrapper hero-subtitle-wrapper">မြန်မာကား // ဂျပန်ကား // ကိုရီးယားကား နိုင်ငံတကာကားများကို အဆင့်မြင့်မြင့် အခမဲ့ကြည့်ရှုပါ!</div>
             </div>
             <div class="hero-link-wrapper">
-                <a id="vipBtn" class="hero-link" href="https://burmaapyr.com" target="_blank">BURMAAPYR.COM</a>
+                <a class="hero-link" href="https://burmaapyr.com" target="_blank">BURMAAPYR.COM</a>
             </div>
         </div>
 
@@ -351,7 +386,7 @@
             <iframe id="frame" src="" width="100%" height="100%" allowfullscreen style="border:none;"></iframe>
         </div>
 
-        <div>
+        <div class="theater-title-container">
             <div id="vTitle" class="anim-wrapper theater-title-wrapper">LOADING TITLE...</div>
         </div>
 
@@ -404,8 +439,6 @@
                         const div = document.createElement('div');
                         div.className = 'video-item';
                         div.onclick = () => play(v.embed, v.title);
-                        
-                        // အစ်ကို့တောင်းဆိုချက်အတိုင်း Views စနစ်ထည့်သွင်းပေးထားခြင်း
                         div.innerHTML = `
                             <img src="${v.default_thumb.src}" class="thumb" loading="lazy">
                             <div class="video-meta-info">👁️ ${parseInt(v.views).toLocaleString()} VIEWS</div>
@@ -487,19 +520,19 @@
             setRandomFeed();
         }
 
-        // Home View Infinite Scroll Logic Trigger
+        // Global Responsive Mobile Scroll Listener Configuration
         window.onscroll = () => {
             if (document.getElementById('theaterPage').style.display !== 'block') {
-                if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 600) {
+                if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 500) {
                     if(!isLoading) { page++; fetchVideos(page); }
                 }
             }
         };
 
-        // Related Items View Infinite Scroll Logic Trigger
+        // Screen Theater Monitor Dynamic Lazy Feed Setup
         document.getElementById('theaterPage').onscroll = function() {
             const theater = document.getElementById('theaterPage');
-            if (theater.scrollTop + theater.clientHeight >= theater.scrollHeight - 400) {
+            if (theater.scrollTop + theater.clientHeight >= theater.scrollHeight - 350) {
                 if (!isRelatedLoading) {
                     relatedPage++;
                     fetchRelatedVideos(relatedPage);
