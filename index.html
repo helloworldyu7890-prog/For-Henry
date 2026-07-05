@@ -78,28 +78,28 @@
         .hero-banner::before { content: '+'; position: absolute; top: -14px; left: -1px; font-size: 26px; font-weight: bold; color: #000; }
         .hero-banner::after { content: '+'; position: absolute; bottom: -18px; right: -1px; font-size: 26px; font-weight: bold; color: #000; }
         
-        /* 🔄 Mobile Typewriter Animation Control Logic */
+        /* 🔄 Improved Mobile Typewriter Animation Logic */
         .anim-container {
             width: 100%;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .anim-wrapper {
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
             border-right: 3px solid var(--text-dark);
-            text-overflow: clip;
             vertical-align: middle;
         }
         
+        /* စာသားအရှည်ကြီးတွေကို အဆုံးထိ သေချာသွားအောင် width: 100% စနစ်သို့ ပြောင်းလဲထားပါသည် */
         .hero-title-wrapper {
-            animation: typeTitle 7s steps(25, end) infinite;
+            animation: typeTitle 8s steps(30, end) infinite;
             font-size: 15px;
             font-weight: 900;
         }
         .hero-subtitle-wrapper {
-            animation: typeSubtitle 7s steps(35, end) infinite;
+            animation: typeSubtitle 10s steps(45, end) infinite;
             font-size: 12px; 
             font-weight: bold; 
             color: #222;
@@ -107,11 +107,11 @@
         
         @keyframes typeTitle {
             0%, 100% { width: 0; }
-            40%, 60% { width: 250px; } /* Mobile Screen ပေါ်မူတည်၍ စာသားအကျယ်ကွက်တိဖြတ်တောက်မှု */
+            40%, 60% { width: 100%; } 
         }
         @keyframes typeSubtitle {
             0%, 100% { width: 0; }
-            40%, 60% { width: 100%; } 
+            45%, 55% { width: 100%; } 
         }
 
         .hero-link-wrapper { display: flex; justify-content: flex-end; width: 100%; margin-top: 10px; }
@@ -204,7 +204,7 @@
             color: #000000;
         }
 
-        /* 🎬 2-Column Responsive Video Grid (ကွက်တိညီညာမှုဗဟိုပြုစနစ်) */
+        /* 🎬 2-Column Responsive Video Grid */
         .video-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -334,7 +334,9 @@
 </head>
 <body>
 
+    <!-- 🏠 [MOBILE MAIN HOME FEED] -->
     <div id="mainPageContent">
+        <!-- Top Navigation Bar -->
         <div class="nav-bar">
             <div class="logo-container" onclick="refreshToRandom()">
                 BURMA <span>- APYR -</span> HD
@@ -342,6 +344,7 @@
             <div class="logo-circle">Logo</div>
         </div>
 
+        <!-- Promoted Campaign Banner -->
         <div class="hero-banner">
             <div class="anim-container">
                 <div class="anim-wrapper hero-title-wrapper">ပရီမီယမ် အတွေ့အကြုံ ပေးစွမ်းနိုင်မှု-------------</div>
@@ -354,11 +357,13 @@
             </div>
         </div>
 
+        <!-- Inline Functional Search Engine Field -->
         <div class="search-container">
             <input type="text" class="search-input" id="searchInput" placeholder="SEARCH...VIDEOS" onkeypress="handleSearch(event)">
             <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
 
+        <!-- Category Horizontal Segment Router -->
         <div class="category-title">CATEGORY</div>
         <div class="category-wrapper">
             <div class="category-bg-line"></div>
@@ -369,12 +374,15 @@
             </div>
         </div>
 
+        <!-- Main Video Streaming Response Feed Grid Layout -->
         <div class="video-grid" id="container"></div>
         <div id="loadingStatus" class="loader" style="display:none;">LOADING VIDEOS...</div>
     </div>
 
 
+    <!-- 📱 [MOBILE THEATER PANEL WATCH EXPERIENCE] -->
     <div id="theaterPage">
+        <!-- Secure Hardware Back Control Navigator Switch -->
         <div class="back-btn-container" onclick="closePlayer()">
             <div class="back-arrow-box">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
@@ -382,20 +390,24 @@
             <div class="back-text-box">နောက်သို့ပြန်သွားရန်</div>
         </div>
         
+        <!-- Live Video Streaming Sandbox Embedded Core Block -->
         <div class="player-box">
             <iframe id="frame" src="" width="100%" height="100%" allowfullscreen style="border:none;"></iframe>
         </div>
 
+        <!-- Live Animated Running Subject Title Label Grid -->
         <div class="theater-title-container">
             <div id="vTitle" class="anim-wrapper theater-title-wrapper">LOADING TITLE...</div>
         </div>
 
+        <!-- Targeted Recommendations Segment Section Slider Grid -->
         <div class="related-section-title">RELATED VIDEOS</div>
         <div class="video-grid" id="relatedContainer"></div>
         <div id="relatedLoadingStatus" class="loader" style="display:none;">LOADING RELATED...</div>
     </div>
 
 
+    <!-- ⚙️ JavaScript Core Controller System Architecture -->
     <script>
         const keywordsPool = ['myanmar', 'japan', 'asian', 'romance', 'sexy', 'leaked', 'amateur'];
         let query = 'all';
