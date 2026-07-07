@@ -11,7 +11,7 @@
             --border-thick: 4px solid #000000;
             --card-gray: #8E8E8E;
             --text-dark: #000000;
-        }
+        } 
 
         /* MobSettings */
         * { 
@@ -27,7 +27,7 @@
             padding: 12px; 
             overflow-x: hidden;
             width: 100%;
-        }
+        } 
 
         /* 👑 UI Navbar Component */
         .nav-bar { 
@@ -69,7 +69,7 @@
             0%, 10% { width: 0; }
             40%, 90% { width: 100%; border-right-color: transparent; }
             100% { width: 0; }
-        }
+        } 
 
         /* 🖼️ Logo Image Area (အစ်ကို့စိတ်ကြိုက် ပုံထည့်ရန်နေရာ) */
         .logo-circle-img {
@@ -80,7 +80,7 @@
             flex-shrink: 0;
             background: #ffffff;
             cursor: pointer;
-        }
+        } 
 
         /* 💥 Hero Banner Box */
         .hero-banner {
@@ -130,10 +130,10 @@
         @keyframes blinkCursor {
             0%, 100% { opacity: 0; }
             50% { opacity: 1; }
-        }
+        } 
 
         .hero-link-wrapper { display: flex; justify-content: flex-end; width: 100%; margin-top: 12px; }
-        .hero-link { font-size: 13px; color: #000000; text-decoration: none; font-weight: 900; border-bottom: 3px solid #000; text-transform: uppercase; }
+        .hero-link { font-size: 13px; color: #000000; text-decoration: none; font-weight: 900; border-bottom: 3px solid #000; text-transform: uppercase; } 
 
         /* 🔍 Search Field Input Box */
         .search-container { padding: 0 0 20px 0; position: relative; width: 100%; }
@@ -152,7 +152,7 @@
             position: absolute;
             right: 15px; top: 12px;
             width: 24px; height: 24px;
-        }
+        } 
 
         /* 🏷️ Category Block Panel */
         .category-title {
@@ -220,7 +220,7 @@
         .category-btn.active {
             background: #000000;
             color: var(--theme-color);
-        }
+        } 
 
         /* 🎬 2-Column Responsive Video Grid */
         .video-grid { 
@@ -257,7 +257,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-        }
+        } 
 
         /* ❌ Videos Not Found Message Box Style */
         .not-found-msg {
@@ -272,7 +272,7 @@
             color: #ff4e50;
             box-shadow: 0 6px 0 #000;
             margin-top: 10px;
-        }
+        } 
 
         /* 📱 Dedicated Separate Watch View Layer */
         #theaterPage { 
@@ -311,7 +311,7 @@
             color: #ffffff;
             font-size: 13px;
             font-weight: 900;
-        }
+        } 
 
         /* 📺 Player Frame Monitor Window Layout */
         .player-box { 
@@ -334,7 +334,7 @@
             font-weight: 900; 
             text-transform: uppercase;
             line-height: 1.4;
-        }
+        } 
 
         /* ✨ Suggestions Sub Header Component Line */
         .related-section-title {
@@ -357,9 +357,9 @@
             order: 3;
             margin-left: 8px;
             font-size: 20px;
-        }
+        } 
 
-        .loader { display: block; text-align: center; padding: 15px; color: #000; font-size: 14px; font-weight: 900; }
+        .loader { display: block; text-align: center; padding: 15px; color: #000; font-size: 14px; font-weight: 900; } 
 
         /* 🚨 Notice Pop-up UI Component */
         .notice-overlay {
@@ -410,7 +410,7 @@
         }
     </style>
 </head>
-<body>
+<body> 
 
     <div class="notice-overlay" id="noticeBox">
         <div class="notice-box">
@@ -420,7 +420,7 @@
             </div>
             <button class="notice-btn" onclick="closeNotice()">CLOSE</button>
         </div>
-    </div>
+    </div> 
 
     <div id="mainPageContent">
         <div class="nav-bar">
@@ -428,7 +428,7 @@
                 <div class="logo-text-anim">BURMA - APYAR - HD</div>
             </div>
             <img src="https://i.ibb.co/1x8rvp6/1783273874096.png" class="logo-circle-img" onclick="refreshToRandom()" alt="Logo">
-        </div>
+        </div> 
 
         <div class="hero-banner">
             <div class="text-block-area">
@@ -438,12 +438,12 @@
             <div class="hero-link-wrapper">
                 <a class="hero-link" href="https://burmaapyar.com" target="_blank">BURMAAPYAR.COM</a>
             </div>
-        </div>
+        </div> 
 
         <div class="search-container">
             <input type="text" class="search-input" id="searchInput" placeholder="SEARCH...VIDEOS" onkeypress="handleSearch(event)">
             <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        </div>
+        </div> 
 
         <div class="category-title">CATEGORY</div>
         <div class="category-wrapper">
@@ -453,7 +453,7 @@
                 <div class="category-btn" onclick="filterCategory('myanmar', this)">Myanmar</div>
                 <div class="category-btn" onclick="filterCategory('japan', this)">Japan</div>
             </div>
-        </div>
+        </div> 
 
         <div class="video-grid" id="container"></div>
         <div id="loadingStatus" class="loader" style="display:none;">LOADING VIDEOS...</div>
@@ -470,17 +470,22 @@
         
         <div class="player-box">
             <iframe id="frame" src="" width="100%" height="100%" allowfullscreen style="border:none;"></iframe>
-        </div>
+        </div> 
 
         <div class="theater-title-container">
             <div id="vTitle" class="theater-title-wrapper">LOADING TITLE...</div>
-        </div>
+        </div> 
 
         <div class="related-section-title">RELATED VIDEOS</div>
         <div class="video-grid" id="relatedContainer"></div>
         <div id="relatedLoadingStatus" class="loader" style="display:none;">LOADING RELATED...</div>
     </div>
 
+    <!-- Adsterra Popunder Code -->
+    <script src="https://pl30241114.effectivecpmnetwork.com/ee/38/cc/ee38cc6193d760163cd128b235db864e.js"></script>
+
+    <!-- Adsterra Social bar code -->
+    <script src="https://pl30241115.effectivecpmnetwork.com/c6/a1/cf/c6a1cfc6ac117f647493c7a5f5e70dad.js"></script>
 
     <script>
         const keywordsPool = ['myanmar', 'japan', 'asian', 'romance', 'sexy', 'leaked', 'amateur', 'jav', 'korean'];
@@ -488,11 +493,11 @@
         let page = 1;
         let relatedPage = 1;
         let isLoading = false;
-        let isRelatedLoading = false;
+        let isRelatedLoading = false; 
 
         function closeNotice() {
             document.getElementById('noticeBox').style.display = 'none';
-        }
+        } 
 
         // Banner Typing Configuration
         const titleTargetText = "ပရီမီယမ် အတွေ့အကြုံ ပေးစွမ်းနိုင်မှု-------------";
@@ -527,16 +532,16 @@
                 }
             }
             typeTitle();
-        }
+        } 
 
         window.onload = function() {
             setRandomFeed();
             startBannerTyping();
-        };
+        }; 
 
         function getRandomPage() {
             return Math.floor(Math.random() * 25) + 1;
-        }
+        } 
 
         function filterCategory(cat, element) {
             document.querySelectorAll('.category-btn').forEach(el => el.classList.remove('active'));
@@ -545,7 +550,7 @@
             page = getRandomPage(); 
             document.getElementById('container').innerHTML = '';
             fetchVideos(page);
-        }
+        } 
 
         function setRandomFeed() {
             query = keywordsPool[Math.floor(Math.random() * keywordsPool.length)];
@@ -558,7 +563,7 @@
             if (isLoading) return;
             isLoading = true;
             document.getElementById('loadingStatus').style.display = 'block';
-            const grid = document.getElementById('container');
+            const grid = document.getElementById('container'); 
 
             try {
                 const res = await fetch(`https://www.eporner.com/api/v2/video/search/?query=${encodeURIComponent(query)}&per_page=20&page=${p}&thumbsize=big`);
@@ -587,12 +592,12 @@
                 document.getElementById('loadingStatus').style.display = 'none';
                 isLoading = false;
             }
-        }
+        } 
 
         async function fetchRelatedVideos(p) {
             if (isRelatedLoading) return;
             isRelatedLoading = true;
-            document.getElementById('relatedLoadingStatus').style.display = 'block';
+            document.getElementById('relatedLoadingStatus').style.display = 'block'; 
 
             try {
                 const randomKeyword = keywordsPool[Math.floor(Math.random() * keywordsPool.length)];
@@ -618,7 +623,7 @@
                 document.getElementById('relatedLoadingStatus').style.display = 'none';
                 isRelatedLoading = false;
             }
-        }
+        } 
 
         function play(url, title) {
             document.getElementById('theaterPage').style.display = 'block';
@@ -627,17 +632,17 @@
             
             document.getElementById('relatedContainer').innerHTML = '';
             relatedPage = getRandomPage();
-            fetchRelatedVideos(relatedPage);
+            fetchRelatedVideos(relatedPage); 
 
             document.getElementById('theaterPage').scrollTop = 0;
             document.body.style.overflow = 'hidden'; 
-        }
+        } 
 
         function closePlayer() {
             document.getElementById('theaterPage').style.display = 'none';
             document.getElementById('frame').src = '';
             document.body.style.overflow = 'auto'; 
-        }
+        } 
 
         function handleSearch(e) {
             if(e.key === 'Enter') {
@@ -647,13 +652,13 @@
                 document.getElementById('container').innerHTML = '';
                 fetchVideos(page);
             }
-        }
+        } 
 
         function refreshToRandom() {
             closePlayer();
             document.getElementById('searchInput').value = '';
             setRandomFeed();
-        }
+        } 
 
         window.onscroll = () => {
             if (document.getElementById('theaterPage').style.display !== 'block') {
